@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Task Management</title>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="container">
+
+      <div class="header">
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input
+            type="text"
+            id="searchInput"
+            placeholder="Search for a task..."
+          />
+        </div>
+      </div>
+
+      <div class="main-content">
+
+        <div class="title-section">
+          <div class="greeting" id="greeting"></div>
+
+          <h1>
+            You've got
+            <span class="task-count" id="taskCount">0</span>
+            task today
+
+            <button class="add-btn" onclick="openModal()">
+              <i class="fas fa-plus"></i>
+              Add New
+            </button>
+          </h1>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <h2>On Hold</h2>
+          </div>
+
+          <div id="onHoldTasks"></div>
+        </div>
+
+        <div class="section">
+          <div class="section-header">
+            <h2>Completed</h2>
+            <span class="badge badge-inactive">Inactive</span>
+          </div>
+
+          <div id="completedTasks"></div>
+        </div>
+
+      </div>
+
+      <div class="sidebar">
+
+        <div class="sidebar-section">
+
+          <h3 class="sidebar-title">
+            Results Summary
+          </h3>
+
+          <div class="stat-card">
+            <div class="stat-label">
+              Completion Rate
+            </div>
+
+            <div
+              class="stat-value"
+              id="completionRateValue"
+            >
+              0%
+            </div>
+
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                id="completionProgress"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">
+              Total Tasks
+            </div>
+
+            <div
+              class="stat-value"
+              id="totalTasks"
+            >
+              0
+            </div>
+
+            <div class="progress-bar">
+              <div
+                class="progress-fill"
+                id="totalProgress"
+                style="width: 0%"
+              ></div>
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">
+              Completed
+            </div>
+
+            <div
+              class="stat-value"
+              id="completedCount"
+            >
+              0
+            </div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-label">
+              Pending
+            </div>
+
+            <div
+              class="stat-value"
+              id="pendingCount"
+            >
+              0
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Task Modal -->
+
+    <div class="modal" id="taskModal">
+
+      <div class="modal-content">
+
+        <h2 class="modal-header">
+          Add / Update Task
+        </h2>
+
+        <form id="taskForm">
+
+          <div class="form-group">
+            <label for="taskTitle">
+              Task Title
+            </label>
+
+            <input
+              type="text"
+              id="taskTitle"
+              placeholder="Enter task title"
+              required
+            />
+          </div>
+
+          <div class="form-group">
+            <label for="taskStatus">
+              Status
+            </label>
+
+            <select id="taskStatus">
+              <option value="pending">
+                Pending
+              </option>
+
+              <option value="progress">
+                In Progress
+              </option>
+
+              <option value="completed">
+                Completed
+              </option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="taskPriority">
+              Priority
+            </label>
+
+            <select id="taskPriority">
+
+              <option value="minor">
+                Minor
+              </option>
+
+              <option value="normal">
+                Normal
+              </option>
+
+              <option value="critical">
+                Critical
+              </option>
+
+            </select>
+          </div>
+
+          <div class="modal-actions">
+
+            <button
+              type="button"
+              class="btn btn-secondary"
+              onclick="closeModal()"
+            >
+              Cancel
+            </button>
+
+            <button
+              type="submit"
+              class="btn btn-primary"
+            >
+              Save Task
+            </button>
+
+          </div>
+
+        </form>
+
+      </div>
+
+    </div>
+
+    <script src="main.js"></script>
+  </body>
+</html>
